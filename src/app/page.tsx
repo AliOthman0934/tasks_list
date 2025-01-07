@@ -1,5 +1,6 @@
 import Link from "next/link"
 import prisma from "@/utils/db"
+import StatusBadge from "@/components/StatusBadge";
 
 async function  HomePage() {
   const tasks = await prisma.task.findMany();
@@ -25,7 +26,7 @@ async function  HomePage() {
             <tr key={task.id} className="border-b border-gray-500">
               <td className="p-3">{index + 1}</td>
               <td>{task.title}</td>
-              <td>{task.status.toString()}</td>
+              <td><StatusBadge status={task.status}/></td>
               <td><Link href={`/task/${task.id}`} className="bg-blue-600 hover:bg-blue-800 transition-colors text-white rounded-md p-2">Details</Link></td>
 
             </tr>
