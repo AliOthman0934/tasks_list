@@ -2,6 +2,8 @@
 import { createTask } from "@/utils/actions";
 import { createTaskSchema } from "@/utils/validatinSchema";
 import { toast } from "react-toastify";
+import { createTaskDto } from "@/utils/dtos";
+
 
 const AddTasksForm = () => {
     const clientAction = async (formData: FormData): Promise<void> => {
@@ -18,7 +20,7 @@ const AddTasksForm = () => {
 
         try {
             // Call the server-side createTask function
-            await createTask(formData);
+            await createTask({title,description} as createTaskDto);
 
             // Provide user feedback
             toast.success("Task added successfully!");
