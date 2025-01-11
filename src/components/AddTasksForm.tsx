@@ -1,6 +1,6 @@
 "use client";
 import { createTask } from "@/utils/actions";
-import { createTaskSchema } from "@/utils/validatinSchema";
+import { createTaskSchema } from "@/utils/validationSchema";
 import { toast } from "react-toastify";
 import { createTaskDto } from "@/utils/dtos";
 
