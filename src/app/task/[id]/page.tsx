@@ -32,7 +32,7 @@ const TaskDetailsPage = async ({params}: TaskDetailsPageProps) => {
                     </form>
                 </div>
             </div>
-            <div className='mt-20 rounded-lg bg-gray-600'>
+            <div className='mt-16 p-5 rounded-lg bg-gray-600'>
                 <div className='flex items-center justify-between'>
                     <h2 className='font-bold text-3xl'>{task.title}</h2>
                     <StatusBadge status={task.status} />
