@@ -17,29 +17,29 @@ const TaskDetailsPage = async ({params}: TaskDetailsPageProps) => {
 
     return (
         <section>
-            <div>
-                <Link href="/">
+            <div className='flex items-center justify-between'>
+                <Link href="/" className='underline'>
                     {"<<"} Back to tasks table
                 </Link>
-                <div>
-                    <Link href={`/task/${task.id}/edit`}>
+                <div className='flex items-center'>
+                    <Link href={`/task/${task.id}/edit`} className='bg-green-700 hover:bg-green-600 transition-colors rounded-lg py-1 px-2 me-3 text-xl'>
                         Edit
                     </Link>
-                    <form>
-                        <button>
+                    <form action="">
+                        <button type='submit' className='bg-red-700 hover:bg-red-600 transition-colors py-1 px-2 text-xl'>
                             Delete
                         </button>
                     </form>
                 </div>
             </div>
-            <div>
-                <div>
-                    <h2>{task.title}</h2>
-                    <StatusBadge status={task.status}/>
+            <div className='mt-20 rounded-lg bg-gray-600'>
+                <div className='flex items-center justify-between'>
+                    <h2 className='font-bold text-3xl'>{task.title}</h2>
+                    <StatusBadge status={task.status} />
                 </div>
-                <small>
+                <small className='text-yellow-400'>
                     {new Date(task.createdAt).toDateString()}
-                    <p>{task.description}</p>
+                    <p className='mt-5 text-xl'>{task.description}</p>
                 </small>
             </div>
         </section>
