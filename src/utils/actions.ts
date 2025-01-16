@@ -28,3 +28,19 @@ try {
 revalidatePath("/")
 redirect("/")
 }
+
+export async function deleteTask(formData:FormData){
+    const id = formData.get("id")?.toString();
+
+    if(!id) return
+
+    try {
+        await prisma.task.delete({where: {id: parseInt(id)}})
+    } catch (error) {
+        throw new Error("Could not delete the task, please try agin");
+        console.log(error)
+    }
+
+    revalidatePath("/");
+    redirect("/");
+}

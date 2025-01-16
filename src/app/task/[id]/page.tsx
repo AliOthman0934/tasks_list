@@ -3,6 +3,7 @@ import Link from "next/link"
 import StatusBadge from '@/components/StatusBadge'
 import { notFound } from 'next/navigation'
 import prisma from '@/utils/db'
+import { deleteTask } from '@/utils/actions'
 
 interface TaskDetailsPageProps {
     params : {id:string}
@@ -25,7 +26,8 @@ const TaskDetailsPage = async ({params}: TaskDetailsPageProps) => {
                     <Link href={`/task/${task.id}/edit`} className='bg-green-700 hover:bg-green-600 transition-colors rounded-lg py-1 px-2 me-3 text-xl'>
                         Edit
                     </Link>
-                    <form action="">
+                    <form action={deleteTask}>
+                        <input type='hidden' name='id' value={task.id}/>
                         <button type='submit' className='bg-red-700 hover:bg-red-600 transition-colors py-1 px-2 text-xl'>
                             Delete
                         </button>
