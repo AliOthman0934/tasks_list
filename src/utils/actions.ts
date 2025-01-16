@@ -12,12 +12,19 @@ export async function createTask(newTask:createTaskDto){
 // if(!newTask.title || !newTask.description) return console.log("Required")
 if(typeof newTask.title !== "string" || newTask.title.length < 2) return;
 if(typeof newTask.description !== "string" || newTask.description.length < 4) return;
-await prisma.task.create({
-    data:{
-        title :newTask.title,
-        description :newTask.description
-    }
-})
+
+try {
+    await prisma.task.create({
+        data:{
+            title :newTask.title,
+            description :newTask.description
+        }
+    })
+} catch (error) {
+    throw new Error("Could not create the task, please try agin");
+    console.log(error)
+}
+
 revalidatePath("/")
 redirect("/")
 }
