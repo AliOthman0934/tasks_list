@@ -16,6 +16,21 @@ const EditeTaskPgae = async ({params}:EditTaskPgaeProps) => {
         <Link href={`task/${task.id}`}>
             {"<<"} Back To Task Details
         </Link>
+        <div>
+            <h1>Edit Task</h1>
+            <form action={""}>
+                <input type="text" name="title" placeholder="Task Title" value={task.title}/>
+                <select name="status" defaultValue={task.status}>
+                    <option value={"ToDo"}>TODO</option>
+                    <option value={"IN_PROGRESS"}>IN_PROGRESS</option>
+                    <option value={"COMPLETED"}>COMPLETED</option>
+                </select>
+                <textarea name="description" id="" rows={5} placeholder="Task Description" defaultValue={task.description}></textarea>
+                <button type="submit">
+                    Edit Task
+                </button>
+            </form>
+        </div>
     </section>
     )
 }
