@@ -3,6 +3,7 @@ import prisma from "@/utils/db";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { createTaskDto } from "./dtos";
+import { Status } from "@prisma/client";
 
 
 export async function createTask(newTask:createTaskDto){
@@ -43,4 +44,30 @@ export async function deleteTask(formData:FormData){
 
     revalidatePath("/");
     redirect("/");
+}
+
+export async function editTask(formData:FormData){
+    const title = formData.get("title")?.toString()
+    const description = formData.get("description")?.toString()
+    const status = formData.get("status") as Status
+    const id = formData.get("id")?.toString()
+
+    if(typeof title !== "string" || title.length < 2) return
+    if(typeof description !== "string" || description.length < 4) return
+    if(typeof id !== "string") return
+    if(!status) return
+
+    try {
+        await prisma.task.update({
+            where : {id : parseInt(id)},
+            data : {title,description,status}
+        })
+    } catch (error) {
+        throw new Error("Could not update teh task, please try agin")
+        console.log(error)
+    }
+
+    revalidatePath("/")
+    revalidatePath(`/task/${id}`)
+    redirect(`/task/${id}`)
 }
