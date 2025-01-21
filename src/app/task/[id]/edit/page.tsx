@@ -41,6 +41,7 @@
 import prisma from "@/utils/db";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { editTask } from "@/utils/actions";
 
 interface EditTaskPgaeProps {
     params: { id: string };
@@ -61,7 +62,7 @@ const EditeTaskPgae = async ({ params }: EditTaskPgaeProps) => {
             </Link>
             <div className="max-w-2xl mx-auto bg-gray-800 p-8 rounded-lg shadow-lg">
                 <h1 className="text-4xl font-bold text-center mb-8">Edit Task</h1>
-                <form action={""} className="flex flex-col gap-6">
+                <form action={editTask} className="flex flex-col gap-6">
                     <div>
                         <label htmlFor="title" className="block text-sm font-medium mb-2">
                             Task Title
