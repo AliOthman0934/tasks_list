@@ -44,6 +44,8 @@ import Link from "next/link";
 import prisma from "@/utils/db";
 import StatusBadge from "@/components/StatusBadge";
 
+export const dynamic = "force-dynamic";
+
 async function HomePage() {
   const tasks = await prisma.task.findMany();
   return (
