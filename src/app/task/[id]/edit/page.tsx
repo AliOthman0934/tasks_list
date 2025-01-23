@@ -67,6 +67,7 @@ const EditeTaskPgae = async ({ params }: EditTaskPgaeProps) => {
                         <label htmlFor="title" className="block text-sm font-medium mb-2">
                             Task Title
                         </label>
+                        <input type="hidden" value={task.id} name="id"/>
                         <input
                             type="text"
                             name="title"
