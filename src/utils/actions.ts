@@ -26,7 +26,7 @@ try {
     console.log(error)
 }
 
-revalidatePath("/")
+// revalidatePath("/")
 redirect("/")
 }
 
@@ -42,7 +42,7 @@ export async function deleteTask(formData:FormData){
         console.log(error)
     }
 
-    revalidatePath("/");
+    // revalidatePath("/");
     redirect("/");
 }
 
@@ -67,7 +67,7 @@ export async function editTask(formData:FormData){
         console.log(error)
     }
 
-    revalidatePath("/")
+    // revalidatePath("/")
     revalidatePath(`/task/${id}`)
     redirect(`/task/${id}`)
 }
