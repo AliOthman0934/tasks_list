@@ -52,40 +52,49 @@ const EditeTaskPgae = async ({ params }: EditTaskPgaeProps) => {
         where: { id: parseInt(params.id) },
     });
     if (!task) notFound();
+
     return (
-        <section className="min-h-screen bg-gray-900 text-white py-10 px-6">
+        <section className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white py-10 px-6">
             <Link
                 href={`task/${task.id}`}
-                className="text-blue-400 hover:underline mb-6 inline-block text-lg"
+                className="text-blue-400 hover:underline mb-8 inline-block text-lg font-medium"
             >
                 {"<<"} Back To Task Details
             </Link>
-            <div className="max-w-2xl mx-auto bg-gray-800 p-8 rounded-lg shadow-lg">
-                <h1 className="text-4xl font-bold text-center mb-8">Edit Task</h1>
-                <form action={editTask} className="flex flex-col gap-6">
+            <div className="max-w-2xl mx-auto bg-gray-800 p-10 rounded-lg shadow-2xl">
+                <h1 className="text-4xl font-extrabold text-center mb-10 text-blue-400">
+                    Edit Task
+                </h1>
+                <form action={editTask} className="flex flex-col gap-8">
+                    <input type="hidden" value={task.id} name="id" />
                     <div>
-                        <label htmlFor="title" className="block text-sm font-medium mb-2">
+                        <label
+                            htmlFor="title"
+                            className="block text-sm font-medium text-gray-300 mb-2"
+                        >
                             Task Title
                         </label>
-                        <input type="hidden" value={task.id} name="id"/>
                         <input
                             type="text"
                             name="title"
                             id="title"
                             placeholder="Task Title"
                             defaultValue={task.title}
-                            className="w-full px-4 py-2 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-4 py-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50"
                         />
                     </div>
                     <div>
-                        <label htmlFor="status" className="block text-sm font-medium mb-2">
+                        <label
+                            htmlFor="status"
+                            className="block text-sm font-medium text-gray-300 mb-2"
+                        >
                             Task Status
                         </label>
                         <select
                             name="status"
                             id="status"
                             defaultValue={task.status}
-                            className="w-full px-4 py-2 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-4 py-3 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50"
                         >
                             <option value="ToDo">TODO</option>
                             <option value="IN_PROGRESS">IN_PROGRESS</option>
@@ -95,7 +104,7 @@ const EditeTaskPgae = async ({ params }: EditTaskPgaeProps) => {
                     <div>
                         <label
                             htmlFor="description"
-                            className="block text-sm font-medium mb-2"
+                            className="block text-sm font-medium text-gray-300 mb-2"
                         >
                             Task Description
                         </label>
@@ -105,14 +114,14 @@ const EditeTaskPgae = async ({ params }: EditTaskPgaeProps) => {
                             rows={5}
                             placeholder="Task Description"
                             defaultValue={task.description}
-                            className="w-full px-4 py-2 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-4 py-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50"
                         ></textarea>
                     </div>
                     <button
                         type="submit"
-                        className="w-full bg-blue-600 hover:bg-blue-500 text-white py-3 rounded-md font-semibold shadow-md transition-colors"
+                        className="w-full bg-blue-600 hover:bg-blue-500 text-white py-3 rounded-lg font-semibold shadow-lg transition-all duration-300 hover:shadow-2xl"
                     >
-                        Edit Task
+                        Update Task
                     </button>
                 </form>
             </div>
